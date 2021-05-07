@@ -203,6 +203,29 @@
             "rid": "win"
           }
         }
+      },
+      "WebApi.Core/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/WebApi.Core.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApi.Core.dll": {}
+        }
+      },
+      "WebApi.Infrastructure/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "WebApi.Core": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/WebApi.Infrastructure.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/WebApi.Infrastructure.dll": {}
+        }
       }
     }
   },
@@ -576,13 +599,25 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "WebApi.Core/1.0.0": {
+      "type": "project",
+      "path": "../Employee.Core/WebApi.Core.csproj",
+      "msbuildProject": "../Employee.Core/WebApi.Core.csproj"
+    },
+    "WebApi.Infrastructure/1.0.0": {
+      "type": "project",
+      "path": "../Employee.Infrastructure/WebApi.Infrastructure.csproj",
+      "msbuildProject": "../Employee.Infrastructure/WebApi.Infrastructure.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net5.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.1",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 5.0.1",
-      "Swashbuckle.AspNetCore >= 5.6.3"
+      "Swashbuckle.AspNetCore >= 5.6.3",
+      "WebApi.Core >= 1.0.0",
+      "WebApi.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -591,11 +626,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MF817_NguyenTrongThao\\EmployeeWeb\\EmployeeWeb.Api\\EmployeeWeb.Api.csproj",
-      "projectName": "EmployeeWeb.Api",
-      "projectPath": "D:\\MF817_NguyenTrongThao\\EmployeeWeb\\EmployeeWeb.Api\\EmployeeWeb.Api.csproj",
+      "projectUniqueName": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
+      "projectName": "WebApi.Api",
+      "projectPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
       "packagesPath": "C:\\Users\\ntthao1\\.nuget\\packages\\",
-      "outputPath": "D:\\MF817_NguyenTrongThao\\EmployeeWeb\\EmployeeWeb.Api\\obj\\",
+      "outputPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\ntthao1\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -611,7 +646,14 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Core\\WebApi.Core.csproj": {
+              "projectPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Core\\WebApi.Core.csproj"
+            },
+            "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Infrastructure\\WebApi.Infrastructure.csproj": {
+              "projectPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Infrastructure\\WebApi.Infrastructure.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

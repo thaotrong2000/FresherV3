@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "WebApi.Infrastructure/1.0.0": {
+        "dependencies": {
+          "WebApi.Core": "1.0.0"
+        },
+        "runtime": {
+          "WebApi.Infrastructure.dll": {}
+        }
+      },
+      "WebApi.Core/1.0.0": {
+        "runtime": {
+          "WebApi.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "WebApi.Infrastructure/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WebApi.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

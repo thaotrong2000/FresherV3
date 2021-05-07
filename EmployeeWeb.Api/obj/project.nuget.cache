@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "HCjz4ynaS6SVMP2ywVf3R9P8OMJiIASjA9VkyCxjpieJXdBBhMCTuj776f7Bacyl0PhUUFlG5eiAQ4g5NfI3oQ==",
+  "dgSpecHash": "HAQxgGdG7pHZM/GoEv1bJ070UT5ebVaw++1MJNr9dmkKWgl1bxtOQH3j78sOK3gaSZ6u/mHvjcIuiTbhxrQkRw==",
   "success": true,
-  "projectFilePath": "D:\\MF817_NguyenTrongThao\\EmployeeWeb\\EmployeeWeb.Api\\EmployeeWeb.Api.csproj",
+  "projectFilePath": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\ntthao1\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.1\\microsoft.aspnetcore.authentication.jwtbearer.5.0.1.nupkg.sha512",
     "C:\\Users\\ntthao1\\.nuget\\packages\\microsoft.aspnetcore.authentication.openidconnect\\5.0.1\\microsoft.aspnetcore.authentication.openidconnect.5.0.1.nupkg.sha512",
