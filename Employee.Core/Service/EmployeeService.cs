@@ -31,7 +31,7 @@ namespace WebApi.Core.Service
                 var isExist = _employeeRepository.CheckEmployeeCodeExist(entity.EmployeeCode);
                 if (isExist == true)
                 {
-                    throw new CustomerException("Mã khách hàng đã tồn tại trên hệ thống!.");
+                    throw new CustomerException(Properties.Resources.Error_EmployeeCodeExist);
                 }
             }
         }
@@ -50,7 +50,7 @@ namespace WebApi.Core.Service
                 var isExist = _employeeRepository.CheckEmployeeCodeExist(entity.EmployeeCode);
                 if (isExist == false)
                 {
-                    throw new CustomerException("Mã khách hàng chưa tồn tại trên hệ thống!.");
+                    throw new CustomerException(Properties.Resources.Error_EmployeeCodeNoExist);
                 }
             }
         }
