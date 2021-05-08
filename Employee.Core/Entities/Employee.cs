@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MISA.Core.AttributeCustom;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,11 +7,19 @@ namespace WebApi.Core.Entities
 {
     public class Employee
     {
-        public string EmployeeId { get; set; }
+        public Guid? EmployeeId { get; set; }
+
+        [MISARequired("Mã khách hàng không được phép để trống")]
+        public string EmployeeCode { get; set; }
+
+        [MISARequired("Tên khách hàng không được phép để trống")]
         public string FullName { get; set; }
+
         public DateTime DateOfBirth { get; set; }
         public int GenderId { get; set; }
-        public string Department { get; set; }
+
+        public Guid? DepartmentId { get; set; }
+
         public int IdentityId { get; set; }
         public DateTime IdentityDate { get; set; }
         public string PositionId { get; set; }

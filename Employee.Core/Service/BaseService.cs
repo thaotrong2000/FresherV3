@@ -1,13 +1,14 @@
-﻿using WebApi.Core.Interface.Infrastructure;
-using WebApi.Core.Interface.Service;
+﻿using WebApi.Core.Interface.Service;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WebApi.Core.Interface.Repository;
+using MISA.Core.Exceptions;
+using MISA.Core.AttributeCustom;
 
 namespace WebApi.Core.Service
 {
     public class BaseService<MISAEntity> : IBaseService<MISAEntity> where MISAEntity : class
-
     {
         /// <summary>
         /// Khai báo InterFace của Repository để có thể thao tác với DataBase
@@ -28,7 +29,7 @@ namespace WebApi.Core.Service
         /// </summary>
         /// <param name="employeeId"></param>
         /// <returns></returns>
-        public int Delete(string employeeId)
+        public int Delete(Guid employeeId)
         {
             // Xử lý database ( bên Repository của Infrastructure)
             var deleteEmployee = _baseRepository.Delete(employeeId);
@@ -46,16 +47,6 @@ namespace WebApi.Core.Service
         /// <param name="fullName"></param>
         /// <param name="phoneNumber"></param>
         /// <returns></returns>
-        public IEnumerable<MISAEntity> FilterByIdNamePhone(string employeeId, string fullName, string phoneNumber)
-        {
-            // Xử lý database ( bên Repository của Infrastructure)
-            var filter = _baseRepository.FilterByIdNamePhone(employeeId, fullName, phoneNumber);
-
-            // Đây là nơi xử lý nghiệp vụ
-
-            // Trả về thông tin về việc Lọc nhân viên
-            return filter;
-        }
 
         /// <summary>
         /// Xử lý nghiệp vụ Lấy toàn bộ dữ liệu nhân viên
@@ -80,6 +71,7 @@ namespace WebApi.Core.Service
         public int Post(MISAEntity Entity)
         {
             // Xử lý database ( bên Repository của Infrastructure)
+            Validate(Entity);
             var postData = _baseRepository.Post(Entity);
 
             // Đây là nơi xử lý nghiệp vụ
@@ -95,6 +87,7 @@ namespace WebApi.Core.Service
         /// <returns></returns>
         public int Put(MISAEntity Entity)
         {
+            CustomValidatePut(Entity);
             // Xử lý database ( bên Repository của Infrastructure)
             var putData = _baseRepository.Put(Entity);
 
@@ -102,6 +95,45 @@ namespace WebApi.Core.Service
 
             // Trả về thông tin về việc Lọc nhân viên
             return putData;
+        }
+
+        protected virtual void CustomValidatePut(MISAEntity entity)
+        {
+        }
+
+        /// <summary>
+        /// Validate Dữ liệu chung
+        /// </summary>
+        /// <param name="entity"></param>
+        private void Validate(MISAEntity entity)
+        {
+            // 1)Lấy ra tất cả Property của Class
+            var properties = typeof(MISAEntity).GetProperties();
+            foreach (var property in properties)
+            {
+                var requiredProperties = property.GetCustomAttributes(typeof(MISARequired), true);
+                if (requiredProperties.Length > 0)
+                {
+                    // Lấy giá trị:
+                    var valueProperty = property.GetValue(entity);
+
+                    // Kiểm tra giá trị:
+                    if (string.IsNullOrEmpty(valueProperty.ToString()))
+                    {
+                        var msgError = (requiredProperties[0] as MISARequired).MsgError;
+                        if (string.IsNullOrEmpty(msgError))
+                        {
+                            msgError = $"Không được để trống {property.Name}";
+                        }
+                        throw new CustomerException(msgError);
+                    }
+                }
+            }
+            CustomValidate(entity);
+        }
+
+        protected virtual void CustomValidate(MISAEntity entity)
+        {
         }
     }
 }

@@ -140,6 +140,15 @@
           "lib/net5.0/MySqlConnector.dll": {}
         }
       },
+      "Newtonsoft.Json/13.0.1": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
       "Swashbuckle.AspNetCore/5.6.3": {
         "type": "package",
         "dependencies": {
@@ -526,6 +535,33 @@
         "mysqlconnector.nuspec"
       ]
     },
+    "Newtonsoft.Json/13.0.1": {
+      "sha512": "ppPFpBcvxdsfUonNcvITKqLl3bqxWbDCZIzDWHzjpdAHRFfZe0Dw9HmA0+za13IdyrgJwpkDTDA9fHaxOrt20A==",
+      "type": "package",
+      "path": "newtonsoft.json/13.0.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.md",
+        "lib/net20/Newtonsoft.Json.dll",
+        "lib/net20/Newtonsoft.Json.xml",
+        "lib/net35/Newtonsoft.Json.dll",
+        "lib/net35/Newtonsoft.Json.xml",
+        "lib/net40/Newtonsoft.Json.dll",
+        "lib/net40/Newtonsoft.Json.xml",
+        "lib/net45/Newtonsoft.Json.dll",
+        "lib/net45/Newtonsoft.Json.xml",
+        "lib/netstandard1.0/Newtonsoft.Json.dll",
+        "lib/netstandard1.0/Newtonsoft.Json.xml",
+        "lib/netstandard1.3/Newtonsoft.Json.dll",
+        "lib/netstandard1.3/Newtonsoft.Json.xml",
+        "lib/netstandard2.0/Newtonsoft.Json.dll",
+        "lib/netstandard2.0/Newtonsoft.Json.xml",
+        "newtonsoft.json.13.0.1.nupkg.sha512",
+        "newtonsoft.json.nuspec",
+        "packageIcon.png"
+      ]
+    },
     "Swashbuckle.AspNetCore/5.6.3": {
       "sha512": "UkL9GU0mfaA+7RwYjEaBFvAzL8qNQhNqAeV5uaWUu/Z+fVgvK9FHkGCpTXBqSQeIHuZaIElzxnLDdIqGzuCnVg==",
       "type": "package",
@@ -684,25 +720,26 @@
     "net5.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 5.0.1",
       "Microsoft.AspNetCore.Authentication.OpenIdConnect >= 5.0.1",
+      "Newtonsoft.Json >= 13.0.1",
       "Swashbuckle.AspNetCore >= 5.6.3",
       "WebApi.Core >= 1.0.0",
       "WebApi.Infrastructure >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ntthao1\\.nuget\\packages\\": {}
+    "C:\\Users\\Trong Thao\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
+      "projectUniqueName": "E:\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
       "projectName": "WebApi.Api",
-      "projectPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
-      "packagesPath": "C:\\Users\\ntthao1\\.nuget\\packages\\",
-      "outputPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\EmployeeWeb.Api\\obj\\",
+      "projectPath": "E:\\FresherV3\\EmployeeWeb.Api\\WebApi.Api.csproj",
+      "packagesPath": "C:\\Users\\Trong Thao\\.nuget\\packages\\",
+      "outputPath": "E:\\FresherV3\\EmployeeWeb.Api\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\ntthao1\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Trong Thao\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -716,11 +753,11 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Core\\WebApi.Core.csproj": {
-              "projectPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Core\\WebApi.Core.csproj"
+            "E:\\FresherV3\\Employee.Core\\WebApi.Core.csproj": {
+              "projectPath": "E:\\FresherV3\\Employee.Core\\WebApi.Core.csproj"
             },
-            "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Infrastructure\\WebApi.Infrastructure.csproj": {
-              "projectPath": "D:\\MF817_NguyenTrongThao\\FresherV3\\Employee.Infrastructure\\WebApi.Infrastructure.csproj"
+            "E:\\FresherV3\\Employee.Infrastructure\\WebApi.Infrastructure.csproj": {
+              "projectPath": "E:\\FresherV3\\Employee.Infrastructure\\WebApi.Infrastructure.csproj"
             }
           }
         }
@@ -749,6 +786,10 @@
               "NU1605"
             ]
           },
+          "Newtonsoft.Json": {
+            "target": "Package",
+            "version": "[13.0.1, )"
+          },
           "Swashbuckle.AspNetCore": {
             "target": "Package",
             "version": "[5.6.3, )"
@@ -772,7 +813,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -5,47 +5,90 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using WebApi.Core.Entities;
-using WebApi.Core.Interface.Infrastructure;
+using WebApi.Core.Interface.Repository;
 
 namespace WebApi.Infrastructure.Repository
 {
-    public class BaseRepository : IBaseRepository<Employee>
+    public class BaseRepository<MISAEntity> : IBaseRepository<MISAEntity> where MISAEntity : class
     {
-        public int Delete(string employeeId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Employee> FilterByIdNamePhone(string employeeId, string fullName, string phoneNumber)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Employee> getAll()
-        {
-            // Kết nối với DataBase
-            string connectString = "Host = 47.241.69.179;" +
+        /// <summary>
+        /// Khai báo các đối tượng dùng chung
+        /// - connect
+        /// - dbConnection
+        /// - tableName
+        /// </summary>
+        protected string connectString = "Host = 47.241.69.179;" +
                 "Port = 3306;" +
-                "Database = MF0_NVManh_CukCuk02;" +
+                "Database = MF817-Import-NTTHAO;" +
                 "User Id = dev;" +
                 "Password = 12345678;" +
                 "AllowZeroDateTime=True"
                 ;
-            IDbConnection dbConnection = new MySqlConnection(connectString);
-            var employees = dbConnection.Query<Employee>("proc_GetAllEmployee", commandType: CommandType.StoredProcedure);
 
-            // Trả về danh sách người dùng
-            return employees;
+        protected IDbConnection dbConnection;
+        private string tableName = typeof(MISAEntity).Name;
+
+        /// <summary>
+        /// Xóa một bản ghi theo khóa chính ( EmployeeId)
+        /// </summary>
+        /// <param name="employeeId"></param>
+        /// <returns></returns>
+        public int Delete(Guid entityId)
+        {
+            using (dbConnection = new MySqlConnection(connectString))
+            {
+                DynamicParameters dynamicParameters = new DynamicParameters();
+                dynamicParameters.Add($"@m_{tableName}Id", entityId);
+                var deleteEmployee = dbConnection.Execute($"proc_Delete{tableName}", param: dynamicParameters, commandType: CommandType.StoredProcedure);
+                return deleteEmployee;
+            }
         }
 
-        public int Post(Employee Entity)
+        /// <summary>
+        /// Lấy toàn bộ dữ liệu của nhân viên
+        /// </summary>
+        /// <returns></returns>
+        public IEnumerable<MISAEntity> getAll()
         {
-            return 0;
+            // Kết nối với DataBase
+
+            using (dbConnection = new MySqlConnection(connectString))
+            {
+                var employees = dbConnection.Query<MISAEntity>($"proc_GetAll{tableName}", commandType: CommandType.StoredProcedure);
+
+                // Trả về danh sách người dùng
+                return employees;
+            }
         }
 
-        public int Put(Employee Entity)
+        /// <summary>
+        /// Thêm mới một bản ghi nhân viên
+        /// </summary>
+        /// <param name="Entity"></param>
+        /// <returns></returns>
+        public int Post(MISAEntity Entity)
         {
-            throw new NotImplementedException();
+            using (dbConnection = new MySqlConnection(connectString))
+            {
+                var postData = dbConnection.Execute($"proc_Insert{tableName}", param: Entity,
+                    commandType: CommandType.StoredProcedure);
+                return postData;
+            }
+        }
+
+        /// <summary>
+        /// Sửa một bản ghi nhân viên
+        /// </summary>
+        /// <param name="Entity"></param>
+        /// <returns></returns>
+        public int Put(MISAEntity Entity)
+        {
+            using (dbConnection = new MySqlConnection(connectString))
+            {
+                var putData = dbConnection.Execute($"proc_Update{tableName}", param: Entity,
+                    commandType: CommandType.StoredProcedure);
+                return putData;
+            }
         }
     }
 }

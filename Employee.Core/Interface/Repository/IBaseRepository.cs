@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace WebApi.Core.Interface.Infrastructure
+namespace WebApi.Core.Interface.Repository
 {
     /// <summary>
     /// InterFace xử lý với DataBase
@@ -51,7 +51,7 @@ namespace WebApi.Core.Interface.Infrastructure
         /// - 204 : Xóa dữ liệu của nhân viên thành công
         /// - 400 : Không thể xóa dữ liệu bản ghi của nhân viên này
         /// </returns>
-        public int Delete(string employeeId);
+        public int Delete(Guid employeeId);
 
         /// <summary>
         /// Lọc nhân viên theo:
@@ -67,6 +67,5 @@ namespace WebApi.Core.Interface.Infrastructure
         /// - 204 : Không có dữ liệu phù hợp
         /// </returns>
         /// CreatedBy: NTTHAO(7/5/2021)
-        public IEnumerable<MISAEntity> FilterByIdNamePhone(string employeeId, string fullName, string phoneNumber);
     }
 }

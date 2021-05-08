@@ -51,7 +51,7 @@ namespace WebApi.Core.Interface.Service
         /// - 400 : Không thể xóa dữ liệu bản ghi của nhân viên này
         /// </returns>
         /// CreatedBy: NTTHAO(7/5/2021)
-        public int Delete(string employeeId);
+        public int Delete(Guid employeeId);
 
         /// <summary>
         /// Xử lý nghiệp vụ khi Lọc nhân viên theo:
@@ -67,6 +67,5 @@ namespace WebApi.Core.Interface.Service
         /// - 204 : Không có dữ liệu phù hợp
         /// </returns>
         /// CreatedBy: NTTHAO(7/5/2021)
-        public IEnumerable<MISAEntity> FilterByIdNamePhone(string employeeId, string fullName, string phoneNumber);
     }
 }
